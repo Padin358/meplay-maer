@@ -13,9 +13,9 @@ const playersFunction = (data) => {
   htmlOutput += `
   <div class="my-8 p-6 bg-gray-800 bg-opacity-90 text-white rounded-2xl border-4 animate-border w-64 flex flex-col items-center relative group overflow-hidden">
     <img src="${data.head}" alt="" class="w-32 mb-6 rounded-xl">
-    <p class="text-2xl text-center font-semibold">${data.name}</p>
+    <p class="text-2xl text-center font-bold">${data.name}</p>
     <p class="my-4">Role: ${role}</p>
-    <p class="text-lg text-center my-auto">${data.desc}</p>
+    <p class="text-lg text-center my-auto font-semibold">${data.desc}</p>
 
     <!-- overlay -->
     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition duration-500 flex flex-row flex-wrap items-center ease-in-out">
