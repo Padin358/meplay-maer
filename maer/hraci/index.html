@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maer RP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes border-rainbow {
+      0%   { border-color: #ec4899; } /* růžová */
+      25%  { border-color: #3b82f6; } /* modrá */
+      50%  { border-color: #10b981; } /* zelená */
+      75%  { border-color: #f59e0b; } /* oranžová */
+      100% { border-color: #ec4899; } /* zpět růžová */
+    }
+    .animate-border {
+      animation: border-rainbow 8s linear infinite;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-[url('../img/bc.jpg')] bg-cover bg-center min-h-screen flex flex-col">
+
+  <!-- Horní navigace -->
+  <nav class="w-full bg-black bg-opacity-80 fixed top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-center space-x-10">
+      <a href="../" class="text-white font-bold hover:text-yellow-400 transition">Domů</a>
+      <a href="" class="text-white font-bold hover:text-yellow-400 transition">Info</a>
+      <a href="#" class="font-bold text-yellow-400">Hráči</a>
+    </div>
+  </nav>
+
+  <!-- Hlavní obsah -->
+  <main class="pt-24 pb-16 text-center mx-20">
+    <div class="flex flex-row flex-wrap justify-evenly gap-16" id="playersOutput"></div>
+  </main>
+
+<footer class="bg-gray-900 bg-opacity-90 text-white py-3">
+  <div class="px-10 items-center flex justify-between">
+    <div class="text-left">
+      <p>Majitel projektu je <strong class="text-blue-500 font-semibold">Jáno</strong></p>
+    </div>
+    <div class="absolute left-1/2 transform -translate-x-1/2">
+      <p class="text-sm">&copy; 2025 Maer RP</p>
+    </div>
+    <div class=" space-x-2">
+      <a href="https://ctverecsmp.eu/index.html" class="hover:text-yellow-400 transition">
+        <img src="new_logo.png" alt="" class="h-12 w-auto">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../js/app.js"></script>
+
+</body>
+</html>
