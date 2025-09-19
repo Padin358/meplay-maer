@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MePlay</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/server-icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Cossette+Texte:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Menu nahoře -->
+<nav class="menu">
+    <ul class="menu-center">
+        <li><a href="index.html">Domů</a></li>
+        <li><a href="C:\Users\jenic\Desktop\MePlay_html_pokus1\o-serveru\index.html">O serveru</a></li>
+        <li><a href="pravidla.html">Pravidla</a></li>
+        <li><a href="a-team.html">A-Team</a></li>
+    </ul>
+    <div id="status-text" class="server-status">Kontroluji server...</div>
+</nav>
+
+
+  <!-- Horní polovina s animovaným pozadím -->
+  <div class="top-half">
+    <div class="menu-text">
+      <div class="bg-layer bg1"></div>
+      <div class="bg-layer bg2"></div>
+      <div class="bg-layer bg3"></div>
+      <div class="bg-layer bg4"></div>
+    </div>
+    <div class="text-container">
+      <h1 class="meplay">
+        <span class="me">Me</span><span class="play">Play</span>
+      </h1>
+      <h3 class="subtitle">"Tvoř, bojuj, přežij – MePlay je tvá kostka."</h3>
+    </div>
+  </div>
+
+  <!-- Dolní polovina – černá oblast -->
+<div class="bottom-half">
+  <div class="cards-container">
+    
+    <div class="event-card">
+      <div class="event-image">
+        <img src="maer1.jpg" alt="Minecraft Event">
+        <div class="event-title">
+          <h2>MAER RP</h2>
+          <p>ROLEPLAY SERVER</p>
+        </div>
+      </div>
+      <div class="event-content">
+        <p>
+          <strong>MAER RP JE ROLEPLAY SERVER KTERÝ SIMULUJE STŘEDOVĚK.</strong>
+          KONKRÉTNĚ 14. AŽ 15. STOLETÍ. MÁME TU I MÓDY KTERÉ NÁM ZARUČUJÍ CO NEJLEPŠÍ HERNÍ ZÁŽITEK.
+          Majitel: Jáno
+        </p>
+        <div class="event-footer">
+          <span class="server-status-maer">Kontroluji server...</span>
+          <span class="date">1.21.1</span>
+          <a href="#" class="read-more">ČÍST VÍCE</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Druhá karta -->
+    <div class="event-card">
+      <div class="event-image">
+        <img src="city1.png" alt="Minecraft Event">
+        <div class="event-title">
+          <h2>MINIHRY</h2>
+          <p>ZÁBAVA PRO VŠECHNY</p>
+        </div>
+      </div>
+      <div class="event-content">
+        <p>
+          <strong>ZAHRAJ SI MINIHRY!</strong>
+          BEDWARS, SKYWARS A DALŠÍ HERNÍ MÓDY PRO VŠECHNY HRÁČE.
+          Majitel: Jáno
+        </p>
+        <div class="event-footer">
+          <span class="server-status-maer">Kontroluji server...</span>
+          <span class="date">-----</span>
+          <a href="" class="read-more">PŘIPRAVUJEME</a>
+        </div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-image">
+        <img src="city2.png" alt="Minecraft Event">
+        <div class="event-title">
+          <h2>Creative City</h2>
+          <p>Stavění města</p>
+        </div>
+      </div>
+      <div class="event-content">
+        <p>
+          <strong>Máš rád stavění v creativu? </strong>
+          Snažíme se postavit to největší a nejhezčí město.
+          Majitel: Jáno
+        </p>
+        <div class="event-footer">
+          <span class="server-status-city">Kontroluji server...</span>
+          <span class="date">1.21.8</span>
+          <a href="C:\Users\jenic\Desktop\MePlay_html_pokus1\city\index.html" class="read-more">ČÍST VÍCE</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  
+
+<script>
+async function checkServer() {
+    try {
+        const res = await fetch('https://api.mcsrvstat.us/2/maer.meplay.cz:25581');
+        const data = await res.json();
+        const els = document.querySelectorAll('.server-status');
+
+        els.forEach(el => {
+            if(data.online){
+                el.textContent = `Server: Online ✅ (${data.players.online}/${data.players.max})`;
+                el.style.color = 'lightgreen';
+            } else {
+                el.textContent = 'Server: Offline ❌';
+                el.style.color = 'red';
+            }
+        });
+    } catch (e) {
+        document.querySelectorAll('.server-status').forEach(el => {
+            el.textContent = 'Server: Nedostupný ❌';
+            el.style.color = 'red';
+        });
+        console.error(e);
+    }
+}
+
+checkServer();
+setInterval(checkServer, 30000);
+
+</script>
+<script>
+async function checkServer() {
+    try {
+        const res = await fetch('https://api.mcsrvstat.us/2/maer.meplay.cz:25581');
+        const data = await res.json();
+        const els = document.querySelectorAll('.server-status-maer');
+
+        els.forEach(el => {
+            if(data.online){
+                el.textContent = `Server: Online ✅ (${data.players.online}/${data.players.max})`;
+                el.style.color = 'lightgreen';
+            } else {
+                el.textContent = 'Server: Offline ❌';
+                el.style.color = 'red';
+            }
+        });
+    } catch (e) {
+        document.querySelectorAll('.server-status').forEach(el => {
+            el.textContent = 'Server: Nedostupný ❌';
+            el.style.color = 'red';
+        });
+        console.error(e);
+    }
+}
+
+checkServer();
+setInterval(checkServer, 30000);
+
+</script>
+<script>
+async function checkServer() {
+    try {
+        const res = await fetch('https://api.mcsrvstat.us/2/city.meplay.cz');
+        const data = await res.json();
+        const els = document.querySelectorAll('.server-status-city');
+
+        els.forEach(el => {
+            if(data.online){
+                el.textContent = `Server: Online ✅ (${data.players.online}/${data.players.max})`;
+                el.style.color = 'lightgreen';
+            } else {
+                el.textContent = 'Server: Offline ❌';
+                el.style.color = 'red';
+            }
+        });
+    } catch (e) {
+        document.querySelectorAll('.server-status').forEach(el => {
+            el.textContent = 'Server: Nedostupný ❌';
+            el.style.color = 'red';
+        });
+        console.error(e);
+    }
+}
+
+checkServer();
+setInterval(checkServer, 30000);
+
+</script>
+</body>
+</html>
+

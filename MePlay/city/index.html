@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MePlay - city</title>
+    <link rel="stylesheet" href="C:\Users\jenic\Desktop\MePlay_html_pokus1\styles.css">
+    <link rel="icon" href="/server-icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Cossette+Texte:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<nav class="menu">
+    <ul class="menu-center">
+        <li><a href="C:\Users\jenic\Desktop\MePlay_html_pokus1\index.html">Domů</a></li>
+        <li><a href="o-serveru.html">O serveru</a></li>
+        <li><a href="players.html">Seznam hráčů</a></li>
+    </ul>
+    <div id="status-text" class="server-status">Kontroluji server...</div>
+</nav>
+
+
+  <!-- Horní polovina s animovaným pozadím -->
+  <div class="top-half">
+    <div class="bg-layer bg1"></div>
+    <div class="bg-layer bg2"></div>
+    <div class="bg-layer bg3"></div>
+    <div class="bg-layer bg4"></div>
+
+    <div class="text-container">
+      <h1 class="meplay">
+        <span class="me">Me</span><span class="play">Play</span>
+      </h1>
+      <h3 class="subtitle">"Tvoř, bojuj, přežij – MePlay je tvá kostka."</h3>
+    </div>
+  </div>
+  <div class="bottom-half">
+    <div class="city-popis">
+        <h1>Co je Creative City?</h1>
+        <hr>
+        <p>Creative City vzniklo pro partu fajn lidí sdílející nadšení pro nekonečné možnosti stavění v creativu.</p>
+        <p>Snažíme se postavit to největší a nejhezčí město.</p>
+        <p>Server běží každý den od 12:00 do 16:45 ale dost často je server dýl.</p>
+        <p>Na server najdete vládní orgány, metro, paláce, náměstí, vězení, organizace, továrny, památky, stadión a mnoho dalšího...</p>
+        <h1>Historie serveru</h1>
+        <hr>
+        <p>Server doprovázely ale i různé události proto jsme pro vás připravily tuto časovou osu :</p>
+        <p>04.11.2024 - Založení serveru</p>
+        <p>15.3.2025 - Založení Šedých států</p>
+        <p>9. a 10.9.2025 Stavba metra linky A a B</p>
+        <h1>Seznam hráčů</h1>
+        <p>Na serveru nás hraje celkem 7</p>
+        <p>JanoJanicek - Majitel</p>
+        <p>Adamito440 - Helper</p>
+        <p>Macek975</p>
+        <p>Kyky11</p>
+        <p>Matvik</p>
+        <p>Skuba123</p>
+        <p>Vojta</p>
+        <h1>Mapa a fotky serveru</h1>
+        <hr>
+    </div>
+<div class="map-slider-container">
+  <div class="dynmap-widget">
+    <iframe src="http://maer.meplay.cz:8123" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <div class="slider">
+    <div class="slides">
+      <img src="city1.png" alt="Obrázek 1">
+      <img src="city2.png" alt="Obrázek 2">
+      <img src="city3.png" alt="Obrázek 3">
+    </div>
+    <div class="arrow arrow-left">&#10094;</div>
+    <div class="arrow arrow-right">&#10095;</div>
+  </div>
+</div>
+  </div>
+<body>
+    
+</body>
+<script>
+async function checkServer() {
+    try {
+        const res = await fetch('https://api.mcsrvstat.us/2/maer.meplay.cz:25581');
+        const data = await res.json();
+        const els = document.querySelectorAll('.server-status');
+
+        els.forEach(el => {
+            if(data.online){
+                el.textContent = `Server: Online ✅ (${data.players.online}/${data.players.max})`;
+                el.style.color = 'lightgreen';
+            } else {
+                el.textContent = 'Server: Offline ❌';
+                el.style.color = 'red';
+            }
+        });
+    } catch (e) {
+        document.querySelectorAll('.server-status').forEach(el => {
+            el.textContent = 'Server: Nedostupný ❌';
+            el.style.color = 'red';
+        });
+        console.error(e);
+    }
+}
+
+checkServer();
+setInterval(checkServer, 30000);
+
+</script>
+<script>
+  const slides = document.querySelector('.slides');
+  const images = document.querySelectorAll('.slides img');
+  const leftArrow = document.querySelector('.arrow-left');
+  const rightArrow = document.querySelector('.arrow-right');
+
+  let index = 0;
+
+  function showSlide(i) {
+    if (i < 0) index = images.length - 1;
+    else if (i >= images.length) index = 0;
+    else index = i;
+    slides.style.transform = `translateX(${-index * 100}%)`;
+  }
+
+  leftArrow.addEventListener('click', () => showSlide(index - 1));
+  rightArrow.addEventListener('click', () => showSlide(index + 1));
+</script>
+
+</html>
