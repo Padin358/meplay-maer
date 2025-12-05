@@ -30,5 +30,4 @@ const playersFunction = (data) => {
 
 players.map(playersFunction)
 
-
 playersOutput.innerHTML = htmlOutput
